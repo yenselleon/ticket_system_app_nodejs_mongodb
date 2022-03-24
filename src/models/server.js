@@ -2,6 +2,7 @@ const express = require('express');
 const cors = require('cors');
 const { dbConection } = require('../database/db.config.js');
 
+var morgan = require('morgan')
 
 
 class Server {
@@ -13,6 +14,7 @@ class Server {
         this.port = process.env.PORT;
         this.path = {
             ticket: '/api/ticket',
+            queue: '/api/queue'
             /* usuariosAuth: '/api/auth',
             buscar: '/api/buscar',
             categorias: '/api/categorias',
@@ -42,20 +44,18 @@ class Server {
         //Lectura y Parseo del Body
         this.app.use(express.json());
 
-        //Directorio Público
-        this.app.use( express.static('public'));
+        //Indicar la ruta del Directorio Público
+        this.app.use( express.static('./src/public'));
 
+        //Middleware para la visualizacion de peticiones HTTP desde la consola
+        this.app.use(morgan('dev'));
 
     }
 
     routes(){
 
-        this.app.use(this.path.addTicket, require('../routes/ticket.routes.js'))
-        /* this.app.use(this.path.usuariosPath, require('../routes/usuarios.routes.js'))
-        this.app.use(this.path.categorias, require('../routes/categorias.routes.js'))
-        this.app.use(this.path.productos, require('../routes/productos.routes.js'))
-        this.app.use(this.path.buscar, require('../routes/buscar.routes.js'))
-        this.app.use(this.path.uploads, require('../routes/uploads.routes.js')) */
+        this.app.use(this.path.ticket, require('../routes/ticket.routes.js'));
+        this.app.use(this.path.queue, require('../routes/queue.routes.js'));
 
     }
 
