@@ -1,6 +1,6 @@
 const {Router} = require('express');
 const { check } = require('express-validator');
-const { addTicket, addQueue } = require('../controllers/tikect.controller');
+const { addTicket, listTicket } = require('../controllers/tikect.controller');
 const { valid_fields } = require('../middleware/valid_fields');
 
 
@@ -8,7 +8,7 @@ const router = Router();
 
 
 //GET
-router.get('/list',);
+router.get('/list', listTicket);
 
 
 //POST

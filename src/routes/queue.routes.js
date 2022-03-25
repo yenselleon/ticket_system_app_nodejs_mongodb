@@ -1,13 +1,13 @@
 const {Router} = require('express');
 const { check } = require('express-validator');
-const { addQueue } = require('../controllers/queue.controller');
+const { addQueue, listQueue } = require('../controllers/queue.controller');
 const { valid_fields } = require('../middleware/valid_fields');
 
 
 const router = Router();
 
 //GET
-router.get('/list',);
+router.get('/list',listQueue);
 
 //POST
 router.post('/add',[

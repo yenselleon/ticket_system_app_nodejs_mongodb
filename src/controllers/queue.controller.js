@@ -11,11 +11,37 @@ const addQueue = async (req = request, res = response, next)=> {
             name
         })
 
-        res.status(201).json(data);
+        res.status(201).json({
+            ok: true,
+            body: data
+        });
 
     } catch (error) {
         console.log(error);
         res.status(500).send({
+            ok: false,
+            message: "error en la peticion"
+        });
+        next(error);
+    }
+
+}
+
+const listQueue = async(req = request, res = response, next)=> {
+
+    try {
+        
+        const data = await models.Queue.find({state: true}).sort({'queue_number': 1});
+
+        res.status(201).json({
+            ok: true,
+            body: data
+        });
+
+    } catch (error) {
+        console.log(error);
+        res.status(500).send({
+            ok: false,
             message: "error en la peticion"
         });
         next(error);
@@ -26,5 +52,6 @@ const addQueue = async (req = request, res = response, next)=> {
 
 
 module.exports = {
-    addQueue
+    addQueue,
+    listQueue
 }

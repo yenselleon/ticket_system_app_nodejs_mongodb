@@ -42,7 +42,7 @@ class Server {
         this.app.use(cors());
 
         //Lectura y Parseo del Body
-        this.app.use(express.json());
+        this.app.use(express.json({extended:true}));
 
         //Indicar la ruta del Directorio Público
         this.app.use( express.static('./src/public'));
