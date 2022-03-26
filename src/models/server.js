@@ -15,11 +15,6 @@ class Server {
         this.path = {
             ticket: '/api/ticket',
             queue: '/api/queue'
-            /* usuariosAuth: '/api/auth',
-            buscar: '/api/buscar',
-            categorias: '/api/categorias',
-            productos: '/api/productos',
-            uploads: '/api/uploads' */
         }
 
         //Conectar a la base de datos mongoose

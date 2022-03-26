@@ -3,11 +3,12 @@ const models = require('../models/index');
 
 
 const addQueue = async (req = request, res = response, next)=> {
-    const {queue_number, name} = req.body
+    const {queue_number, name, atention_time} = req.body
     
     try {
         const data = await models.Queue.create({
             queue_number,
+            atention_time,
             name
         })
 

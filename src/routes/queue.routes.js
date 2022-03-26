@@ -12,12 +12,15 @@ router.get('/list',listQueue);
 //POST
 router.post('/add',[
     check('queue_number', 'El numero de cola es obligatorio y el valor debe de ser un numero').not().isEmpty().isNumeric(),
+    check('atention_time', 'El tiempo de antencion es obligatorio y el valor debe de ser un numero').not().isEmpty().isNumeric(),
     check('name', 'El nombre es obligartorio').not().isEmpty(),
     valid_fields
 ], addQueue);
 
 //UPDATE
 router.put('activate');
-router.put('desactivate');
+router.put('desactivate/:id',(req, res)=> {
+    console.log("todo bien ")
+});
 
 module.exports = router;
