@@ -17,10 +17,5 @@ router.post('/add',[
     valid_fields
 ], addQueue);
 
-//UPDATE
-router.put('activate');
-router.put('desactivate/:id',(req, res)=> {
-    console.log("todo bien ")
-});
 
 module.exports = router;

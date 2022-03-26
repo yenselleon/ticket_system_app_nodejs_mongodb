@@ -2,14 +2,15 @@ const {Router} = require('express');
 const { check } = require('express-validator');
 const { addTicket, listTicket, listTicketByQueue, desactivateTicket } = require('../controllers/tikect.controller');
 const { valid_fields } = require('../middleware/valid_fields');
-
+const validState = require('../middleware/valid_state');
 
 const router = Router();
 
 
 //GET
 router.get('/list', listTicket);
-router.get('/listTicketByQueue', listTicketByQueue);
+
+router.get('/listTicketByQueue',listTicketByQueue);
 
 
 //POST
@@ -22,7 +23,7 @@ router.post('/add',[
 
 //UPTADE
 router.put('/desactivate/:id', desactivateTicket);
-/* router.put('/activate',); */
+
 
 
 
